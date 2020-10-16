@@ -78,7 +78,16 @@ namespace Prog3_1 {
 	void Set::push() {
 		try {
 			char a[100];
-			std::cin >> a;
+			char b = '\n';
+			int i = 0;
+			while (b == '\n')
+				b = std::cin.get();
+			do {
+				a[i] = b;
+				i++;
+				b = std::cin.get();
+			} while (b != '\n');
+			a[i] = '\0';
 			this->setARR(a);
 		}
 		catch (std::exception& ex) {
