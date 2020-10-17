@@ -22,11 +22,11 @@ namespace Prog3_1 {
 				i++, this->size = i);
 	}
 
-	//Set::Set(const Set& other) {
-	//	std::cout << "copy for   " << this << std::endl;
-	//	this->size = other.size;
-	//	for (int i = 0; other.arr[i]; this->arr[i] = other.arr[i], i++);
-	//}
+	Set::Set(const Set& other) {
+		std::cout << "copy for   " << this << std::endl;
+		this->size = other.size;
+		for (int i = 0; other.arr[i]; this->arr[i] = other.arr[i], i++);
+	}
 
 
 
