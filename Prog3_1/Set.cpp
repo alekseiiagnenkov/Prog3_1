@@ -9,17 +9,17 @@ namespace Prog3_1 {
 	}
 
 	Set::Set(int size) {
-		std::cout << "constructor for " << this << std::endl;
-		this->checkSize(size);
-		this->size = size;
-		for (int i = 0; i < size; this->arr[i] = 32 + i, i++);
+			std::cout << "constructor for " << this << std::endl;
+			this->checkSize(size);
+			this->size = size;
+			for (int i = 0; i < size; this->arr[i] = 32 + i, i++);
 	}
 
 	Set::Set(const char* arr) : size(0) {
-		std::cout << "constructor for " << this << std::endl;
-		for (int i = 0; arr[i];
-			!this->find_el(arr[i]) ? this->arr[i] = arr[i] : throw std::invalid_argument("Duplicate an element"),
-			i++, this->size = i);
+			std::cout << "constructor for " << this << std::endl;
+			for (int i = 0; arr[i];
+				!this->find_el(arr[i]) ? this->arr[i] = arr[i] : throw std::exception("Duplicate an element! str#21"),
+				i++, this->size = i);
 	}
 
 	//Set::Set(const Set& other) {
@@ -38,7 +38,7 @@ namespace Prog3_1 {
 	void Set::setARR(char* arr) {
 		this->size = 0;
 		for (int i = 0; arr[i];
-			!this->find_el(arr[i]) ? this->arr[i] = arr[i] : throw std::invalid_argument("Duplicate an element"),
+			!this->find_el(arr[i]) ? this->arr[i] = arr[i] : throw std::exception("Duplicate an element!"),
 			i++, this->size = i);
 	}
 
@@ -46,7 +46,6 @@ namespace Prog3_1 {
 
 	Set& summ(Set& left, Set& right)
 	{
-		//Set Str(left);
 		Set Str;
 		Str.size = left.size;
 		for (int i = 0; left.arr[i]; Str.arr[i] = left.arr[i], i++);
@@ -98,7 +97,7 @@ namespace Prog3_1 {
 
 	int Set::add_el(const char el) {
 		int i;
-		for (i = 0; i < this->size; !this->find_el(el) ? i++ : throw std::invalid_argument("Duplicate an element"));
+		for (i = 0; i < this->size; !this->find_el(el) ? i++ : throw std::invalid_argument("Duplicate an element! str#100"));
 		this->arr[i] = el;
 		this->size++;
 		return 0;
@@ -113,7 +112,7 @@ namespace Prog3_1 {
 
 	void Set::checkSize(int size) {
 		if (size > this->MAX || size < 0)
-			throw std::invalid_argument("Invalid size");
+			throw std::exception("Invalid size! str#115");
 	}
 
 	int getNaturalInt(int* a) {
@@ -183,20 +182,13 @@ namespace Prog3_1 {
 	}
 
 	int dialog_set_message(Set& Set1, Set& Set2, Set& Set3) {
-		try {
 			std::cout << "Enter massedge for set1:";
 			Set1.push();
-			std::cin.clear();
 			std::cin.ignore(INT_MAX, '\n');
 			std::cout << "Enter massedge for set2:";
 			Set2.push();
-			std::cin.clear();
 			std::cin.ignore(INT_MAX, '\n');
 			return 1;
-		}
-		catch (std::exception& ex) {
-			std::cout << ex.what() << std::endl;
-		}
 	}
 
 	int dialog_get_arr(Set& Set1, Set& Set2, Set& Set3) {
