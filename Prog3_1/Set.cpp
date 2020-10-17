@@ -1,45 +1,45 @@
 #define _CRT_SECURE_NO_WARNINGS
 #include "Set.h"
 
-namespace Prog3_1 {
+namespace prog3_1 {
 
-	Set::Set() : size(0) {
+	Set::Set() : size_(0) {
 		std::cout << "constructor for " << this << std::endl;
-		for (int i = 0; i < size; this->arr[i] = 32 + i, i++);
+		for (int i = 0; i < size_; this->arr_[i] = 32 + i, i++);
 	}
 
 	Set::Set(int size) {
 			std::cout << "constructor for " << this << std::endl;
 			this->checkSize(size);
-			this->size = size;
-			for (int i = 0; i < size; this->arr[i] = 32 + i, i++);
+			this->size_ = size;
+			for (int i = 0; i < size; this->arr_[i] = 32 + i, i++);
 	}
 
-	Set::Set(const char* arr) : size(0) {
+	Set::Set(const char* arr) : size_(0) {
 			std::cout << "constructor for " << this << std::endl;
 			for (int i = 0; arr[i];
-				!this->find_el(arr[i]) ? this->arr[i] = arr[i] : throw std::exception("Duplicate an element! str#21"),
-				i++, this->size = i);
+				!this->find_el(arr[i]) ? this->arr_[i] = arr[i] : throw std::exception("Duplicate an element! str#21"),
+				i++, this->size_ = i);
 	}
 
 	Set::Set(const Set& other) {
 		std::cout << "copy for   " << this << std::endl;
-		this->size = other.size;
-		for (int i = 0; other.arr[i]; this->arr[i] = other.arr[i], i++);
+		this->size_ = other.size_;
+		for (int i = 0; other.arr_[i]; this->arr_[i] = other.arr_[i], i++);
 	}
 
 
 
 	void Set::setSize(int size) {
 		this->checkSize(size);
-		this->size = size;
+		this->size_ = size;
 	}
 
 	void Set::setARR(char* arr) {
-		this->size = 0;
+		this->size_ = 0;
 		for (int i = 0; arr[i];
-			!this->find_el(arr[i]) ? this->arr[i] = arr[i] : throw std::exception("Duplicate an element!"),
-			i++, this->size = i);
+			!this->find_el(arr[i]) ? this->arr_[i] = arr[i] : throw std::exception("Duplicate an element!"),
+			i++, this->size_ = i);
 	}
 
 
@@ -47,30 +47,30 @@ namespace Prog3_1 {
 	Set& summ(Set& left, Set& right)
 	{
 		Set Str;
-		Str.size = left.size;
-		for (int i = 0; left.arr[i]; Str.arr[i] = left.arr[i], i++);
+		Str.size_ = left.size_;
+		for (int i = 0; left.arr_[i]; Str.arr_[i] = left.arr_[i], i++);
 
 
-		for (int i = 0; i < right.size;
-			!Str.find_el(right.arr[i]) ? Str.arr[Str.size] = right.arr[i], Str.size += 1, i++ : i++);
+		for (int i = 0; i < right.size_;
+			!Str.find_el(right.arr_[i]) ? Str.arr_[Str.size_] = right.arr_[i], Str.size_ += 1, i++ : i++);
 		return Str;
 	}
 
 	Set& multiplication(Set& left, Set& right) {
 		Set Str;
 		int j, i;
-		for (i = 0, j = 0; i < right.size;
-			left.find_el(right.arr[i]) ? Str.arr[j] = right.arr[i], j++, i++ : i++);
-		Str.size = j;
+		for (i = 0, j = 0; i < right.size_;
+			left.find_el(right.arr_[i]) ? Str.arr_[j] = right.arr_[i], j++, i++ : i++);
+		Str.size_ = j;
 		return Str;
 	}
 
 	Set& subtraction(Set& left, Set& right) {
 		int i, j;
 		Set Str;
-		for (i = 0, j = 0; i < left.size;
-			!right.find_el(left.arr[i]) ? Str.arr[j] = left.arr[i], j++, i++ : i++);
-		Str.size = j;
+		for (i = 0, j = 0; i < left.size_;
+			!right.find_el(left.arr_[i]) ? Str.arr_[j] = left.arr_[i], j++, i++ : i++);
+		Str.size_ = j;
 		return Str;
 	}
 
@@ -78,7 +78,7 @@ namespace Prog3_1 {
 		try {
 			int i = 1;
 			char b = '\n';
-			this->size = 0;
+			this->size_ = 0;
 			while (b == '\n')
 				b = std::cin.get();
 			do {
@@ -97,15 +97,15 @@ namespace Prog3_1 {
 
 	int Set::add_el(const char el) {
 		int i;
-		for (i = 0; i < this->size; !this->find_el(el) ? i++ : throw std::exception("Duplicate an element! str#100"));
-		this->arr[i] = el;
-		this->size++;
+		for (i = 0; i < this->size_; !this->find_el(el) ? i++ : throw std::exception("Duplicate an element! str#100"));
+		this->arr_[i] = el;
+		this->size_++;
 		return 0;
 	}
 
 	int Set::find_el(const char el) {
-		for (int i = 0; i != this->size; i++)
-			if (this->arr[i] == el)
+		for (int i = 0; i != this->size_; i++)
+			if (this->arr_[i] == el)
 				return 1;
 		return 0;
 	}
@@ -146,56 +146,56 @@ namespace Prog3_1 {
 		return rc;
 	}
 
-	int dialog_summ(Set& Set1, Set& Set2, Set& Set3) {
-		Set3 = summ(Set1, Set2);
+	int dialogSumm(Set& S1, Set& S2, Set& S3) {
+		S3 = summ(S1, S2);
 		std::cout << "Your resolting message:";
-		Set3.getARR();
+		S3.getARR();
 		std::cout << std::endl;
 		return 1;
 	}
 
-	int dialog_summ_char(Set& Set1, Set& Set2, Set& Set3) {
+	int dialogSummChar(Set& S1, Set& S2, Set& S3) {
 		char a;
 		std::cout << "Add char to set1" << std::endl << "Enter char:";
 		std::cin >> a;
-		Set1.add_el(a);
+		S1.add_el(a);
 		std::cout << "Your resolting massege:";
-		Set1.getARR();
+		S1.getARR();
 		std::cout << std::endl;
 		return 1;
 	}
 
-	int dialog_multiplication(Set& Set1, Set& Set2, Set& Set3) {
-		Set3 = multiplication(Set1, Set2);
+	int dialogMultiplication(Set& S1, Set& S2, Set& S3) {
+		S3 = multiplication(S1, S2);
 		std::cout << "Your resolting massege:";
-		Set3.getARR();
+		S3.getARR();
 		std::cout << std::endl;
 		return 1;
 	}
 
-	int dialog_subtraction(Set& Set1, Set& Set2, Set& Set3) {
-		Set3 = subtraction(Set1, Set2);
+	int dialogSubtraction(Set& S1, Set& S2, Set& S3) {
+		S3 = subtraction(S1, S2);
 		std::cout << "Your resolting massege:";
-		Set3.getARR();
+		S3.getARR();
 		std::cout << std::endl;
 		return 1;
 	}
 
-	int dialog_set_message(Set& Set1, Set& Set2, Set& Set3) {
+	int dialogSetMessage(Set& S1, Set& S2, Set& S3) {
 			std::cout << "Enter message for set1:";
-			Set1.push();
+			S1.push();
 			std::cin.ignore(INT_MAX, '\n');
 			std::cout << "Enter message for set2:";
-			Set2.push();
+			S2.push();
 			std::cin.ignore(INT_MAX, '\n');
 			return 1;
 	}
 
-	int dialog_get_arr(Set& Set1, Set& Set2, Set& Set3) {
+	int dialogGetArr(Set& S1, Set& S2, Set& S3) {
 		std::cout << "Str1: ";
-		Set1.getARR();
+		S1.getARR();
 		std::cout << "Str2: ";
-		Set2.getARR();
+		S2.getARR();
 		return 1;
 	}
 }

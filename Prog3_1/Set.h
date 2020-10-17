@@ -1,11 +1,11 @@
 #include <iostream>
-namespace Prog3_1 {
+namespace prog3_1 {
 
 	class Set {
 	private:
 		static const int MAX = 100;
-		int size;
-		char arr[MAX];
+		int size_;
+		char arr_[MAX];
 	public:
 		Set();
 		Set(int);
@@ -16,9 +16,9 @@ namespace Prog3_1 {
 		void setSize(int);
 		void setARR(char*);
 
-		int getSize() const { return size; }
+		int getSize() const { return size_; }
 		int getMaxSize() const { return MAX; }
-		void getARR() const { for (int i = 0; i < this->size; std::cout << this->arr[i], i++); std::cout << std::endl; }
+		void getARR() const { for (int i = 0; i < this->size_; std::cout << this->arr_[i], i++); std::cout << std::endl; }
 
 
 		friend Set& summ(Set&, Set&);
@@ -33,11 +33,11 @@ namespace Prog3_1 {
 
 	int getNaturalInt(int*);
 	int dialog(const char* [], int);
-	int dialog_summ(Set&, Set&, Set&);
-	int dialog_summ_char(Set&, Set&, Set&);
-	int dialog_multiplication(Set&, Set&, Set&);
-	int dialog_subtraction(Set&, Set&, Set&);
-	int dialog_set_message(Set&, Set&, Set&);
-	int dialog_get_arr(Set&, Set&, Set&);
+	int dialogSumm(Set&, Set&, Set&);
+	int dialogSummChar(Set&, Set&, Set&);
+	int dialogMultiplication(Set&, Set&, Set&);
+	int dialogSubtraction(Set&, Set&, Set&);
+	int dialogSetMessage(Set&, Set&, Set&);
+	int dialogGetArr(Set&, Set&, Set&);
 }
 
