@@ -77,21 +77,20 @@ namespace Prog3_1 {
 
 	void Set::push() {
 		try {
-			char a[100];
+			int i = 1;
 			char b = '\n';
-			int i = 0;
+			this->size = 0;
 			while (b == '\n')
 				b = std::cin.get();
 			do {
-				a[i] = b;
-				i++;
+				this->add_el(b);
 				b = std::cin.get();
 			} while (b != '\n');
-			a[i] = '\0';
-			this->setARR(a);
+			std::cout << "Push Enter!" << std::endl;
 		}
 		catch (std::exception& ex) {
-			std::cout << ex.what();
+			std::cout << ex.what() << std::endl;
+			std::cout << "Push Enter!" << std::endl;;
 		}
 	}
 
@@ -184,11 +183,20 @@ namespace Prog3_1 {
 	}
 
 	int dialog_set_message(Set& Set1, Set& Set2, Set& Set3) {
-		std::cout << "Enter massedge for set1:";
-		Set1.push();
-		std::cout << "Enter massedge for set2:";
-		Set2.push();
-		return 1;
+		try {
+			std::cout << "Enter massedge for set1:";
+			Set1.push();
+			std::cin.clear();
+			std::cin.ignore(INT_MAX, '\n');
+			std::cout << "Enter massedge for set2:";
+			Set2.push();
+			std::cin.clear();
+			std::cin.ignore(INT_MAX, '\n');
+			return 1;
+		}
+		catch (std::exception& ex) {
+			std::cout << ex.what() << std::endl;
+		}
 	}
 
 	int dialog_get_arr(Set& Set1, Set& Set2, Set& Set3) {
