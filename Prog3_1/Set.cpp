@@ -117,16 +117,16 @@ namespace Prog3_1 {
 	}
 
 	int getNaturalInt(int* a) {
-		int n;
 		do {
-			n = scanf("%d", a);
-			if (n < 0)
+			std::cin >> *a;
+			if (*a < 0)
 				return 0;
-			if (n == 0 || *a < 0) {
-				printf("%s\n", "Error! Please, repeat your input: ");
-				scanf("%*[^\n]");
+			if (*a == 0 || *a < 0) {
+				std::cout << "Error! Please, repeat your input: ";
+				std::cin.clear();
+				std::cin.ignore(INT_MAX, '\n');
 			}
-		} while (n == 0 || *a < 0);
+		} while (*a == 0 || *a < 0);
 		return 1;
 	}
 
