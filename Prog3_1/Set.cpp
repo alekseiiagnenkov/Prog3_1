@@ -97,7 +97,7 @@ namespace Prog3_1 {
 
 	int Set::add_el(const char el) {
 		int i;
-		for (i = 0; i < this->size; !this->find_el(el) ? i++ : throw std::invalid_argument("Duplicate an element! str#100"));
+		for (i = 0; i < this->size; !this->find_el(el) ? i++ : throw std::exception("Duplicate an element! str#100"));
 		this->arr[i] = el;
 		this->size++;
 		return 0;
