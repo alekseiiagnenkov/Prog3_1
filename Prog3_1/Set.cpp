@@ -148,7 +148,7 @@ namespace Prog3_1 {
 
 	int dialog_summ(Set& Set1, Set& Set2, Set& Set3) {
 		Set3 = summ(Set1, Set2);
-		std::cout << "Your resolting massege:";
+		std::cout << "Your resolting message:";
 		Set3.getARR();
 		std::cout << std::endl;
 		return 1;
@@ -182,10 +182,10 @@ namespace Prog3_1 {
 	}
 
 	int dialog_set_message(Set& Set1, Set& Set2, Set& Set3) {
-			std::cout << "Enter massedge for set1:";
+			std::cout << "Enter message for set1:";
 			Set1.push();
 			std::cin.ignore(INT_MAX, '\n');
-			std::cout << "Enter massedge for set2:";
+			std::cout << "Enter message for set2:";
 			Set2.push();
 			std::cin.ignore(INT_MAX, '\n');
 			return 1;
