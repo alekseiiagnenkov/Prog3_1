@@ -76,7 +76,6 @@ namespace prog3_1 {
 
 	void Set::push() {
 		try {
-			int i = 1;
 			char b = '\n';
 			this->size_ = 0;
 			while (b == '\n')
@@ -85,11 +84,11 @@ namespace prog3_1 {
 				this->add_el(b);
 				b = std::cin.get();
 			} while (b != '\n');
-			std::cout << "Push Enter!" << std::endl;
 		}
 		catch (std::exception& ex) {
 			std::cout << ex.what() << std::endl;
-			std::cout << "Push Enter!" << std::endl;;
+			std::cin.clear();
+			std::cin.ignore(INT_MAX, '\n');
 		}
 	}
 
@@ -184,10 +183,8 @@ namespace prog3_1 {
 	int dialogSetMessage(Set& S1, Set& S2, Set& S3) {
 			std::cout << "Enter message for set1:";
 			S1.push();
-			std::cin.ignore(INT_MAX, '\n');
 			std::cout << "Enter message for set2:";
 			S2.push();
-			std::cin.ignore(INT_MAX, '\n');
 			return 1;
 	}
 
