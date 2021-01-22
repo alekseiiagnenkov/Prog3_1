@@ -1,7 +1,7 @@
 #include <iostream>
 #include "Set.h"
 
-using namespace prog3_1;
+using namespace prog3_2;
 const char* msgs[] = { " [0] Exit",
                        " [1] Set + Set",
                        " [2] Set + char",

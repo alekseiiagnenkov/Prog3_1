@@ -1,5 +1,5 @@
 #include <iostream>
-namespace prog3_1 {
+namespace prog3_2 {
 
 	class Set {
 	private:
@@ -11,20 +11,27 @@ namespace prog3_1 {
 		Set(int);
 		Set(const char*);
 		Set(const Set&);
+
 		~Set() { std::cout << "desstructor for  " << this << std::endl; }
+
 
 		void setSize(int);
 		void setARR(char*);
 
+
 		int getSize() const { return size_; }
 		int getMaxSize() const { return MAX; }
+		//const char* getARR() const { return arr; }
 		void getARR() const { for (int i = 0; i < this->size_; std::cout << this->arr_[i], i++); std::cout << std::endl; }
 
+		friend Set& operator + (Set&, Set&);
+		//Set& operator + (const Set&);
+		Set& operator += (const char);
+		friend Set& operator * (const Set&, Set&);
+		friend Set& operator - (Set&, Set&);
+		friend std::ostream& operator << (std::ostream&, const Set&);
+		friend std::istream& operator >> (std::istream&, Set&);
 
-		friend Set& summ(Set&, Set&);
-		friend Set& multiplication(Set&, Set&);
-		friend Set& subtraction(Set&, Set&);
-		void push();
 
 		int add_el(const char);
 		int find_el(const char);
@@ -40,4 +47,3 @@ namespace prog3_1 {
 	int dialogSetMessage(Set&, Set&, Set&);
 	int dialogGetArr(Set&, Set&, Set&);
 }
-
