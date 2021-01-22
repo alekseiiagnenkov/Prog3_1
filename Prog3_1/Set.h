@@ -1,30 +1,35 @@
 #include <iostream>
-namespace prog3_1 {
+namespace prog3_3 {
 
 	class Set {
 	private:
-		static const int MAX = 100;
-		int size_;
-		char arr_[MAX];
+		int size;
+		char* arr;
 	public:
 		Set();
 		Set(int);
 		Set(const char*);
 		Set(const Set&);
-		~Set() { std::cout << "desstructor for  " << this << std::endl; }
+		~Set();
+
 
 		void setSize(int);
 		void setARR(char*);
 
-		int getSize() const { return size_; }
-		int getMaxSize() const { return MAX; }
-		void getARR() const { for (int i = 0; i < this->size_; std::cout << this->arr_[i], i++); std::cout << std::endl; }
+
+		int getSize() const { return size; }
+		//const char* getARR() const { return arr; }
+		void getARR() const { for (int i = 0; i < this->size; std::cout << this->arr[i], i++); std::cout << std::endl; }
 
 
-		friend Set& summ(Set&, Set&);
-		friend Set& multiplication(Set&, Set&);
-		friend Set& subtraction(Set&, Set&);
-		void push();
+		Set operator + (const Set&);
+		Set& operator += (const char);
+		friend Set operator * (const Set&, Set&);
+		friend Set operator - (Set&, Set&);
+		Set& operator = (const Set& other);
+		friend std::ostream& operator << (std::ostream&, const Set&);
+		friend std::istream& operator >> (std::istream&, Set&);
+
 
 		int add_el(const char);
 		int find_el(const char);
@@ -40,4 +45,3 @@ namespace prog3_1 {
 	int dialogSetMessage(Set&, Set&, Set&);
 	int dialogGetArr(Set&, Set&, Set&);
 }
-
